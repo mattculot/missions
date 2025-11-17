@@ -22,7 +22,6 @@ class Duree :
         @post: Retourne le nombre total de secondes de cette instance de Duree (self).
         """
         compte_sec_tot = self.s + (self.m*60) + (self.h*3600)
-        print("une durée de " + str(self.h) + "h " + str(self.m) + "m " + str(self.s) + "s compte " + str(compte_sec_tot) + " secondes")
         return compte_sec_tot
     def delta(self,d) :
         """
@@ -31,20 +30,19 @@ class Duree :
                et la durée d passée en paramètre.
                Cette valeur renovoyée est positif si cette durée (self)
                est plus grand que la durée d, négatif sinon.
-        Par exemple, si cette durée (self) est 8h 41m 25s (donc 31285 secondes)
-        et la durée d est 0h 1m 25s, la valeur retournée est 31200.
-        Inversement, si cette durée (self) est 0h 1m 25s et la durée
-        d est 8h 41m 25s, alors la valeur retournée est -31200.
+        
         """
         self.d = d
         nbr_sec_d = d.to_secondes()
         compte_sec_tot = self.s + (self.m*60) + (self.h*3600)
         diff = compte_sec_tot - nbr_sec_d
+        print(diff)
         return diff
+    def afficher_seconde(self):
+        print("une durée de " + str(self.h) + "h " + str(self.m) + "m " + str(self.s) + "s compte " + str(compte_sec_tot) + " secondes")
 
 
-temps = Duree(40, 22, 3)
-print(temps.to_secondes())  
+ 
 
 class Chanson :
     
