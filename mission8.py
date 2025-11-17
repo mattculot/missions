@@ -1,26 +1,50 @@
 class Duree :
-    
+
     def __init__(self,h,m,s):
-    """
-    @pre: h, m et s sont des entiers positifs (ou zéro)
-          m et s sont < 60
-    @post: Crée une nouvelle durée en heures, minutes et secondes.
-    """
-    self.h = heure
-    self.m = minute
-    self.s = seconde
-    if self.s < 60:
-        self.m += 1
-    if self.m < 60:
-        self.h +=
-    pass
+        """
+        @pre: h, m et s sont des entiers positifs (ou zéro)
+            m et s sont < 60
+        @post: Crée une nouvelle durée en heures, minutes et secondes.
+        """
+        self.h = h
+        self.m = m
+        self.s = s
+        if self.s > 60:
+            self.m += 1
+        if self.m > 60:
+            self.h += 1
+        pass
 
     def to_secondes(self):
-    """
-    @pre:  -
-    @post: Retourne le nombre total de secondes de cette instance de Duree (self).
-    Par exemple, une durée de 8h 41m 25s compte 31285 secondes.
-    """
+        
+        """
+        @pre:  -
+        @post: Retourne le nombre total de secondes de cette instance de Duree (self).
+        """
+        compte_sec_tot = self.s + (self.m*60) + (self.h*3600)
+        print("une durée de " + str(self.h) + "h " + str(self.m) + "m " + str(self.s) + "s compte " + str(compte_sec_tot) + " secondes")
+        return compte_sec_tot
+    def delta(self,d) :
+        """
+        @pre:  d est une instance de la classe Duree
+        @post: Retourne la différence en secondes entre cette durée (self)
+               et la durée d passée en paramètre.
+               Cette valeur renovoyée est positif si cette durée (self)
+               est plus grand que la durée d, négatif sinon.
+        Par exemple, si cette durée (self) est 8h 41m 25s (donc 31285 secondes)
+        et la durée d est 0h 1m 25s, la valeur retournée est 31200.
+        Inversement, si cette durée (self) est 0h 1m 25s et la durée
+        d est 8h 41m 25s, alors la valeur retournée est -31200.
+        """
+        self.d = d
+        nbr_sec_d = d.to_secondes()
+        compte_sec_tot = self.s + (self.m*60) + (self.h*3600)
+        diff = compte_sec_tot - nbr_sec_d
+        return diff
+
+
+temps = Duree(40, 22, 3)
+print(temps.to_secondes())  
 
 class Chanson :
     
