@@ -15,6 +15,13 @@ class Duree :
         self.h +=
     pass
 
+    def to_secondes(self):
+    """
+    @pre:  -
+    @post: Retourne le nombre total de secondes de cette instance de Duree (self).
+    Par exemple, une durée de 8h 41m 25s compte 31285 secondes.
+    """
+
 class Chanson :
     
     # A COMPLETER PAR LES ETUDIANTS    
