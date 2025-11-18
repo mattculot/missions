@@ -23,6 +23,7 @@ class Duree :
         """
         compte_sec_tot = self.s + (self.m*60) + (self.h*3600)
         return compte_sec_tot
+    
     def delta(self,d) :
         """
         @pre:  d est une instance de la classe Duree
@@ -38,10 +39,40 @@ class Duree :
         diff = compte_sec_tot - nbr_sec_d
         print(diff)
         return diff
+    
     def afficher_seconde(self):
+        compte_sec_tot = to_secondes(self)
         print("une durée de " + str(self.h) + "h " + str(self.m) + "m " + str(self.s) + "s compte " + str(compte_sec_tot) + " secondes")
 
+    def apres(self,d):
+        """
+        @pre:  d est une instance de la classe Duree
+        @post: Retourne True si cette durée (self) est plus grand que la durée
+               d passée en paramètre; retourne False sinon.
+        """
+        if diff <= 0:
+            return False
+        else:
+            return True
+    def ajouter(self,d):
+        """
+        @pre:  d est une instance de la classe Duree
+        @post: Ajoute une autre durée d à cette durée (self),
+               corrigée de manière à ce que les minutes et les secondes soient
+               dans l'intervalle [0..60[, en reportant au besoin les valeurs
+               hors limites sur les unités supérieures
+               (60 secondes = 1 minute, 60 minutes = 1 heure).
+               Ne retourne pas une nouvelle durée mais modifié la durée self.
+        """
 
+    def __str__(self):
+        """
+        @pre:  -
+        @post: Retourne cette durée sous la forme de texte "heures:minutes:secondes".
+        Astuce: l'expression "{:02}:{:02}:{:02}".format(heures, minutes, secondes)
+        retourne le string désiré avec les nombres en deux chiffres en ajoutant
+        les zéros nécessaires.
+        """
  
 
 class Chanson :
