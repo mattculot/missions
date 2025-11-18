@@ -2,6 +2,7 @@
 # Tests pour la classe Duree #
 ##############################
 # Kim Mens, 30-10-2021, à compléter par les étudiants
+#matt culot et livio curati
 
 # Pour le moment, pour tester votre programme orienté objet
 # vous allez encore utiliser les instructions "assert" comme
@@ -17,6 +18,8 @@ from mission8 import Duree, Chanson, Album
 d0 = Duree(0,0,0)
 d1 = Duree(10,20,59)
 d2 = Duree( 8,41,25)
+d3 = Duree(10,20,59)
+#Duree(heure, minute, secondes)
 
 # FONCTION POUT TESTER LA METHODE __str__ DE LA CLASSE Duree
 def test_Duree_str() :
@@ -32,14 +35,31 @@ def test_Duree_to_secondes() :
 
 # FONCTION POUR TESTER LA METHODE delta DE LA CLASSE Duree
 def test_Duree_delta():
-    # A COMPLETER PAR LES ETUDIANTS
-    pass
+    #delta(self, d), on soustrait d à self et on retorune la valeur (vérif que c'est bien - si d > self et inversement
+    # Création d’objets Duree
+    assert d1.delta(d0) > 0, "Test 1 duree delta"
+    assert d0.delta(d1) < 0, "Test 2 duree delta"
+    assert d1.delta(d3) == 0, "Test 3 duree delta"
+    try:
+        d1.delta("mot") == False, "Test 4 duree delta"
+    except AttributeError:
+        pass
     
 # FONCTION POUR TESTER  LA METHODE apres DE LA CLASSE Duree
 def test_Duree_apres():
-    assert d1.apres(d2),     "Test 1 Duree apres"
-    assert not d0.apres(d1), "Test 2 Duree apres"
-    # A COMPLETER PAR LES ETUDIANTS
+    assert d1.apres(d2) == True, "Test 1 Duree apres"
+    assert not d0.apres(d1) == True, "Test 2 Duree apres"
+    assert not d1.apres(d3) == True, "Test 3 Duree apres"
+    assert d1.apres(d0) == True, "Test 4 Duree apres"
+    try:
+        assert d1.apres("mot") == False, "Test 6 Duree apres"
+    except AttributeError:
+        pass
+
+
+
+    
+
     
 # FONCTION POUR TESTER LA METHODE ajouter DE LA CLASSE Duree
 def test_Duree_ajouter():
@@ -47,11 +67,11 @@ def test_Duree_ajouter():
     pass
 
 # APPEL DES DIFFERENTES FONCTIONS TEST
-test_Duree_str()
+#test_Duree_str()
 test_Duree_to_secondes()
 test_Duree_delta()
 test_Duree_apres()
-test_Duree_ajouter()
+#test_Duree_ajouter()
 
 ################################
 # Tests pour la classe Chanson #

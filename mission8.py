@@ -24,6 +24,10 @@ class Duree :
         compte_sec_tot = self.s + (self.m*60) + (self.h*3600)
         return compte_sec_tot
     
+    def  afficher_secondes(self):
+        compte_sec_tot = self.to_secondes()
+        print("une durée de " + str(self.h) + "h " + str(self.m) + "m " + str(self.s) + "s compte " + str(compte_sec_tot) + " secondes")
+
     def delta(self,d) :
         """
         @pre:  d est une instance de la classe Duree
@@ -37,23 +41,24 @@ class Duree :
         nbr_sec_d = d.to_secondes()
         compte_sec_tot = self.s + (self.m*60) + (self.h*3600)
         diff = compte_sec_tot - nbr_sec_d
-        print(diff)
         return diff
     
-    def afficher_seconde(self):
-        compte_sec_tot = to_secondes(self)
-        print("une durée de " + str(self.h) + "h " + str(self.m) + "m " + str(self.s) + "s compte " + str(compte_sec_tot) + " secondes")
-
+    def afficher_delta(self, d):
+        diff = self.delta(d)
+        print(str(diff) + " secondes")
+        
     def apres(self,d):
         """
         @pre:  d est une instance de la classe Duree
         @post: Retourne True si cette durée (self) est plus grand que la durée
                d passée en paramètre; retourne False sinon.
         """
+        diff = self.delta(d)
         if diff <= 0:
             return False
         else:
             return True
+        
     def ajouter(self,d):
         """
         @pre:  d est une instance de la classe Duree
