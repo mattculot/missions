@@ -109,7 +109,16 @@ class Chanson :
 
 class Album :
     
-    # A COMPLETER PAR LES ETUDIANTS
+    def __init__(self, numero):
+        """
+        @pre:  numero est un entier identifiant de facon unique cet album
+        @post: Crée un nouvel album, avec comme identifiant le numero,
+        et avec une liste de chansons vide.
+        """
+        chanson = []
+        self.numero = numero
+        # album = self.numero + chanson + descrip
+        # return album
     pass
 
 if __name__ == "__main__":
