@@ -165,57 +165,29 @@ class Album :
         return description
 
 if __name__ == "__main__":
-    # Grâce à la ligne ci-dessus, le code ci-dessous ne sera exécuté que si on n'exécute ce fichier directement.
-    # Ceci nous permet d'éviter que le code ci-dessous sera exécuté lorsqu'on fait un import de ce fichier,
-    # par exemple dans notre fichier test.py
     pass
 
-    
     numero_album = 1
     album = Album(numero_album)
-    album.chansons = []
-    
-    duree_totale = 0
-    LIMITE_SECONDES = 75 * 60
-    LIMITE_CHANSONS = 100
-    
 
     with open("music-db.txt", "r") as f:
-        for ligne in f:
-            
-            ligne = ligne.strip()
-            if ligne == "":
-                continue  
-            
-            partie = ligne.split(" ")
-            titre = partie[0]
-            auteur = partie[1]
-            m = partie[2]
-            s = partie[3]
+        for ligne in f:            
+            parts = ligne.split(" ")
+            titre  = parts[0]
+            auteur = parts[1]
+            m      = parts[2]
+            s      = parts[3]
             h = 0
-            d = Duree(h, m, s)
-            chanson = Chanson(titre, auteur, d)
-            
-            nouvelle_duree = duree_totale + d.to_secondes()
-            
-            if len(album.chansons) >= LIMITE_CHANSONS or nouvelle_duree > LIMITE_SECONDES:
-                print(f"ALBUM {album.numero}")
-                for c in album.chansons:
-                    print("  " + str(c))
-                print()
-                
+
+            duree = Duree(h, m, s)
+            chanson = Chanson(titre, auteur, duree)
+
+            if album.add(chanson) == False:
+                print(album)
+                print ("\n")
                 numero_album += 1
                 album = Album(numero_album)
-                album.chansons = []
-                duree_totale = 0 
-            
-            album.chansons.append(chanson)
-            duree_totale += d.to_secondes()
+                album.add(chanson)  
 
-    print(f"ALBUM {album.numero}")
-    for c in album.chansons:
-        print("  " + str(c))
-
-
-
-
+    
+    print(album)
