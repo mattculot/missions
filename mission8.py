@@ -6,10 +6,10 @@ class Duree :
             m et s sont < 60
         @post: Crée une nouvelle durée en heures, minutes et secondes.
         """
-        self.h = h
-        self.m = m
-        self.s = s
-        while self.s >= 60:
+        self.h = int(h)
+        self.m = int(m)
+        self.s = int(s)
+        while self.s > 60:
             self.m += 1
             self.s -= 60
         while self.m >= 60:
@@ -163,14 +163,59 @@ class Album :
             i += 1
 
         return description
-   
-
-
 
 if __name__ == "__main__":
     # Grâce à la ligne ci-dessus, le code ci-dessous ne sera exécuté que si on n'exécute ce fichier directement.
     # Ceci nous permet d'éviter que le code ci-dessous sera exécuté lorsqu'on fait un import de ce fichier,
     # par exemple dans notre fichier test.py
     pass
-    # A COMPLETER PAR LES ETUDIANTS
-    # (mettez ici votre code pour créer les albums à partir de la lecture du fichier
+
+    
+    numero_album = 1
+    album = Album(numero_album)
+    album.chansons = []
+    
+    duree_totale = 0
+    LIMITE_SECONDES = 75 * 60
+    LIMITE_CHANSONS = 100
+    
+
+    with open("music-db.txt", "r") as f:
+        for ligne in f:
+            
+            ligne = ligne.strip()
+            if ligne == "":
+                continue  
+            
+            partie = ligne.split(" ")
+            titre = partie[0]
+            auteur = partie[1]
+            m = partie[2]
+            s = partie[3]
+            h = 0
+            d = Duree(h, m, s)
+            chanson = Chanson(titre, auteur, d)
+            
+            nouvelle_duree = duree_totale + d.to_secondes()
+            
+            if len(album.chansons) >= LIMITE_CHANSONS or nouvelle_duree > LIMITE_SECONDES:
+                print(f"ALBUM {album.numero}")
+                for c in album.chansons:
+                    print("  " + str(c))
+                print()
+                
+                numero_album += 1
+                album = Album(numero_album)
+                album.chansons = []
+                duree_totale = 0 
+            
+            album.chansons.append(chanson)
+            duree_totale += d.to_secondes()
+
+    print(f"ALBUM {album.numero}")
+    for c in album.chansons:
+        print("  " + str(c))
+
+
+
+
