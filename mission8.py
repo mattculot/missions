@@ -9,10 +9,12 @@ class Duree :
         self.h = h
         self.m = m
         self.s = s
-        if self.s > 60:
+        while self.s >= 60:
             self.m += 1
-        if self.m > 60:
+            self.s -= 60
+        while self.m >= 60:
             self.h += 1
+            self.m -= 60
         pass
 
     def to_secondes(self):
