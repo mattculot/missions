@@ -55,23 +55,49 @@ def test_Duree_apres():
         assert d1.apres("mot") == False, "Test 6 Duree apres"
     except AttributeError:
         pass
-
-
-
-    
-
     
 # FONCTION POUR TESTER LA METHODE ajouter DE LA CLASSE Duree
 def test_Duree_ajouter():
-    # A COMPLETER PAR LES ETUDIANTS
+    dA = Duree(1, 10, 20)
+    dB = Duree(2, 5, 15)
+    dA.ajouter(dB)
+    assert (dA.h, dA.m, dA.s) == (3, 15, 35), "Test 1 Duree ajouter"
+
+    dC = Duree(0, 0, 50)
+    dD = Duree(0, 0, 20)
+    dC.ajouter(dD)
+    assert (dC.m, dC.s) == (1, 10), "Test 2 Duree ajouter"
+
+    dE = Duree(1, 50, 0)
+    dF = Duree(0, 30, 0)
+    dE.ajouter(dF)
+    assert (dE.h, dE.m) == (2, 20), "Test 3 Duree ajouter"
+
+    dG = Duree(1, 59, 50)
+    dH = Duree(1, 59, 20)
+    dG.ajouter(dH)
+    assert not (dG.h, dG.m, dG.s) == (3, 0, 10), "Test 4 Duree ajouter"
+
+    dI= Duree(5, 30, 10)
+    dJ = Duree(0, 0, 0)
+    dI.ajouter(dJ)
+    assert (dI.h, dI.m, dI.s) == (5, 30, 10), "Test 5 Duree ajouter"
+
+    try:
+        dK = Duree(1,1,1)
+        dK.ajouter("mot")
+        assert False, "Test 6 Duree ajouter"
+    except AttributeError:
+        pass
+
     pass
 
 # APPEL DES DIFFERENTES FONCTIONS TEST
-#test_Duree_str()
+test_Duree_str()
 test_Duree_to_secondes()
 test_Duree_delta()
 test_Duree_apres()
-#test_Duree_ajouter()
+test_Duree_ajouter()
 
 ################################
 # Tests pour la classe Chanson #
