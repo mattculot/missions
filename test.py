@@ -105,11 +105,12 @@ test_Duree_ajouter()
 
 # CREATION DE QUELQUES OBJETS DE LA CLASSE Chanson A TESTER
 c = Chanson("Let's Dance", "David Bowie", Duree(0,4,5))
+c1 = Chanson("bla", "blo", Duree(0,61,61))
 
 # FONCTION POUR TESTER LA METHODE __str__ DE LA CLASSE Chanson
 def test_Chanson_str(chanson) :
-    # A COMPLETER PAR LES ETUDIANTS
-    pass
+    assert str(c) == "Let's Dance - David Bowie - 00:04:05", "Test 1 Chanson __str__"
+    assert str(c1) == "bla - blo - 01:02:01", "Test 2 Chanson__str__"
 
 # APPEL DES DIFFERENTES FONCTIONS TEST
 test_Chanson_str(c)
@@ -119,16 +120,28 @@ test_Chanson_str(c)
 ##############################
 
 # CREATION D'UN OBJET DE LA CLASSE Album A TESTER
-# à fournir par les étudiants
+album = Album(1)
+
+c1 = Chanson("bla", "blo", Duree(0,4,0))
+c2 = Chanson("blabla", "bloblo", Duree(1,10,0))
+c3 = Chanson("blablabla", "blobloblo", Duree(0,10,0))
 
 # FONCTION POUR TESTER LA METHODE __str__ DE LA CLASSE Album
-# à fournir par les étudiants
+def test_Album_str():
+    texte = str(album)
+    assert "01: bla - blo - 00:04:00" in texte, "Test Album __str__"
 
 # FONCTION POUR TESTER LA METHODE add DE LA CLASSE Album
-# à fournir par les étudiants
+def test_Album_add():
+    assert album.add(c1) == True, "Test 1 Album add"
+    album.add(c2)
+    assert album.add(c3) == False, "Test 2 Album add"
+
 
 # APPEL DES DIFFERENTES FONCTIONS TEST
-# à fournir par les étudiants
+test_Album_add()
+test_Album_str()
+
 
 #####################################
 # Test du comportement du programme #

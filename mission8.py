@@ -126,11 +126,46 @@ class Album :
         @post: Crée un nouvel album, avec comme identifiant le numero,
         et avec une liste de chansons vide.
         """
-        chanson = []
         self.numero = numero
-        # album = self.numero + chanson + descrip
-        # return album
+        self.chansons = []
+        self.duree = Duree(0,0,0)
     pass
+    
+    
+    def add(self, chanson):
+        """pre: un album avec un liste de chansons et une autre chanson
+        post: return false si plus de 100 chansons ou plus de 75 minutes. return true sinon"""
+        
+        if len(self.chansons) >= 100:  #si il y a + de 100 chansons
+            return False
+        
+        copie_duree = Duree(self.duree.h, self.duree.m, self.duree.s)
+        copie_duree.ajouter(chanson.duree)
+        
+        if copie_duree.to_secondes() > 75*60:  #si on a plus de 75 minutes
+            return False
+        
+        self.chansons.append(chanson)
+        self.duree.ajouter(chanson.duree)
+        return True
+
+
+    def __str__(self):
+        description = "Album " + str(self.numero) + " (" + str(len(self.chansons)) + " chansons, " + str(self.duree) + ")"
+            
+        i = 1
+        for chanson in self.chansons:
+            numero = str(i)
+            if i < 10:
+                numero = "0" + numero
+            ligne = "\n" + numero + ": " + str(chanson)
+            description += ligne
+            i += 1
+
+        return description
+   
+
+
 
 if __name__ == "__main__":
     # Grâce à la ligne ci-dessus, le code ci-dessous ne sera exécuté que si on n'exécute ce fichier directement.
