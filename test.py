@@ -150,4 +150,15 @@ test_Album_str()
 # QUELQUES TESTS ICI POUR TESTER QUE LES 3 CLASSES COLLABORENT CORRECTEMENT
 # ET PEUVENT ETRE UTILISE POUR CREER DES ALBUMS DE CHANSONS SELON LES CONSIGNES
 # DE LA MISSION
-# à fournir par les étudiants
+# Test du comportement du programme
+def test_comportement():
+    album = Album(1)
+    c1 = Chanson("Test1", "Moi", Duree(0,4,0))
+    c2 = Chanson("Test2", "Toi", Duree(0,3,30))
+
+    assert album.add(c1) == True, "Test comportement 1"
+    assert album.add(c2) == True, "Test comportement 2"
+
+    assert album.duree.to_secondes() == (4*60 + 3*60 + 30), "Test comportement 3"
+
+test_comportement()
