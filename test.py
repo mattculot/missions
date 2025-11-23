@@ -1,94 +1,62 @@
-##############################
-# Tests pour la classe Duree #
-##############################
-# Kim Mens, 30-10-2021, à compléter par les étudiants
+"""
+Tests fournis pour la mission 9; à compléter par les étudiants.
+@author Kim Mens
+@version 14 novembre 2025
+"""
 
-# Pour le moment, pour tester votre programme orienté objet
-# vous allez encore utiliser les instructions "assert" comme
-# dans les missions 5 à 7. 
-# (Dans une mission futur nous introduirons le nouveau mécanisme
-#  des tests unitaires qui est encore mieux approprié pour tester
-#  du code orienté objet.)
+from mission9 import *
 
-# D'abord on doit importer les classe à tester
-from mission8 import Duree, Chanson, Album
+#
+# FOURNI DE BASE
+#
 
-# CREATION DE QUELQUES OBJETS DE LA CLASSE Duree A TESTER
-d0 = Duree(0,0,0)
-d1 = Duree(10,20,59)
-d2 = Duree( 8,41,25)
+playliste1 = ListeLecture("Minecraft")
 
-# FONCTION POUT TESTER LA METHODE __str__ DE LA CLASSE Duree
-def test_Duree_str() :
-    assert d1.__str__() == "10:20:59", "Test 1 Duree __str__"
-    assert d2.__str__() == "08:41:25", "Test 2 Duree __str__"
-    # A COMPLETER EVENTUELLEMENT PAR LES ETUDIANTS
+medias = [
+        Media("Tuto installation Minecraft (100% gratuit!!)", "LeCrafteur", Duree(0, 10, 1)),
+        Media("Sweden", "C418", Duree(0, 3, 36)),
+        Media("Revenge", "CaptainSparklez", Duree(0, 4, 24)),
+        Media("Journal d'un noob (tome 1)", "Cube Kid", Duree(2, 36, 21))
+        ]
+
+for media in medias:
+    playliste1.ajouter(media)
+
+medias = [
+        Media("Tuto installation Minecraft (100% gratuit!!)", "LeCrafteur", Duree(0, 10, 1)),
+        Media("Sweden", "C418", Duree(0, 3, 36)),
+        Media("Revenge", "CaptainSparklez", Duree(0, 4, 24)),
+        Media("Journal d'un noob (tome 1)", "Cube Kid", Duree(2, 36, 21))
+        ]
+
+playliste2 = ListeLecture("Livres audio Minecraft")
+
+livres_audio = [
+        LivreAudio("Journal d'un noob (tome 1)", "Cube Kid", Duree(2, 36, 21), editeur="404 Éditions"),
+        ]
+
+for livre_audio in livres_audio:
+    playliste2.ajouter(livre_audio)
+
+def afficher_playliste(playliste):
+    print(playliste)
     
-# FONCTION POUR TESTER LA METHODE toSecondes DE LA CLASSE Duree
-def test_Duree_to_secondes() :
-    assert d1.to_secondes() == 37259, "Test 1 Duree toSecondes"
-    assert d2.to_secondes() == 31285, "Test 2 Duree toSecondes"
-    # A COMPLETER EVENTUELLEMENT PAR LES ETUDIANTS
-
-# FONCTION POUR TESTER LA METHODE delta DE LA CLASSE Duree
-def test_Duree_delta():
-    # A COMPLETER PAR LES ETUDIANTS
-    pass
     
-# FONCTION POUR TESTER  LA METHODE apres DE LA CLASSE Duree
-def test_Duree_apres():
-    assert d1.apres(d2),     "Test 1 Duree apres"
-    assert not d0.apres(d1), "Test 2 Duree apres"
-    # A COMPLETER PAR LES ETUDIANTS
+#######################################################################################""
+liste_videos = [
+        Video("Tuto installation Minecraft (100% gratuit!!)", "LeCrafteur", Duree(0, 10, 1), '720p'),
+        Video("Sweden", "C418", Duree(0, 3, 36), '1080p'),
+        Video("Revenge", "CaptainSparklez", Duree(0, 4, 24), '4k'),
+        ]
+V1 = Video("Journal d'un noob (tome 1)", "Cube Kid", Duree(2, 36, 21), '180000p')
+
+if __name__ == "__main__":
+
+    print("\n*** TEST DE LA CLASSE ListeLecture ET DE LA CLASSE Media ***\n")
+    afficher_playliste(playliste1)
+    print("\n*** TEST DE LA CLASSE ListeLecture ET DE LA CLASSE LivreAudio ***\n")
+    afficher_playliste(playliste2)
     
-# FONCTION POUR TESTER LA METHODE ajouter DE LA CLASSE Duree
-def test_Duree_ajouter():
-    # A COMPLETER PAR LES ETUDIANTS
-    pass
-
-# APPEL DES DIFFERENTES FONCTIONS TEST
-test_Duree_str()
-test_Duree_to_secondes()
-test_Duree_delta()
-test_Duree_apres()
-test_Duree_ajouter()
-
-################################
-# Tests pour la classe Chanson #
-################################
-
-# CREATION DE QUELQUES OBJETS DE LA CLASSE Chanson A TESTER
-c = Chanson("Let's Dance", "David Bowie", Duree(0,4,5))
-
-# FONCTION POUR TESTER LA METHODE __str__ DE LA CLASSE Chanson
-def test_Chanson_str(chanson) :
-    # A COMPLETER PAR LES ETUDIANTS
-    pass
-
-# APPEL DES DIFFERENTES FONCTIONS TEST
-test_Chanson_str(c)
-
-##############################
-# Tests pour la classe Album #
-##############################
-
-# CREATION D'UN OBJET DE LA CLASSE Album A TESTER
-# à fournir par les étudiants
-
-# FONCTION POUR TESTER LA METHODE __str__ DE LA CLASSE Album
-# à fournir par les étudiants
-
-# FONCTION POUR TESTER LA METHODE add DE LA CLASSE Album
-# à fournir par les étudiants
-
-# APPEL DES DIFFERENTES FONCTIONS TEST
-# à fournir par les étudiants
-
-#####################################
-# Test du comportement du programme #
-#####################################
-
-# QUELQUES TESTS ICI POUR TESTER QUE LES 3 CLASSES COLLABORENT CORRECTEMENT
-# ET PEUVENT ETRE UTILISE POUR CREER DES ALBUMS DE CHANSONS SELON LES CONSIGNES
-# DE LA MISSION
-# à fournir par les étudiants
+    print("test pour la classe video")
+    print(liste_videos)
+    print(V1) #l'erreur c'est normal ca veut dire que ca fonctionne bien
