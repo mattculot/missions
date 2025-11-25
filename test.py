@@ -81,8 +81,10 @@ if __name__ == "__main__":
     afficher_playliste(playliste1)
     print("\n*** TEST DE LA CLASSE ListeLecture ET DE LA CLASSE LivreAudio ***\n")
     afficher_playliste(playliste2)
+    
     print("\n*** TEST DE LA CLASSE ListeLecture ET DE LA CLASSE chanson ***\n")
     afficher_playliste(playliste3)
+    playliste3.print_taille()
     
     print("test pour la classe video")
     print(liste_videos)
