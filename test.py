@@ -42,13 +42,22 @@ def afficher_playliste(playliste):
     print(playliste)
     
     
-#######################################################################################""
+############################################################################################
 liste_videos = [
         Video("Tuto installation Minecraft (100% gratuit!!)", "LeCrafteur", Duree(0, 10, 1), '720p'),
         Video("Sweden", "C418", Duree(0, 3, 36), '1080p'),
         Video("Revenge", "CaptainSparklez", Duree(0, 4, 24), '4k'),
         ]
-V1 = Video("Journal d'un noob (tome 1)", "Cube Kid", Duree(2, 36, 21), '180000p')
+#V1 = Video("Journal d'un noob (tome 1)", "Cube Kid", Duree(2, 36, 21), '180000p')
+
+############################################################################################
+C1 = chanson("Sweden", "C418", Duree(0, 3, 36), "Minecraft OST", None)
+
+C2 = chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), "Fallen Kingdoms", ["Villageois", "Herobrine"])
+
+
+
+
 
 if __name__ == "__main__":
 
@@ -59,4 +68,10 @@ if __name__ == "__main__":
     
     print("test pour la classe video")
     print(liste_videos)
-    print(V1) #l'erreur c'est normal ca veut dire que ca fonctionne bien
+    #print(V1) #l'erreur c'est normal ca veut dire que ca fonctionne bien
+    print(C1)
+    print(C2)
+    
+    
+    
+
