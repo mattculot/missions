@@ -237,3 +237,40 @@ class Video(Media):
         """
         s = "({}, {}) '{}' par {} ({})".format(self.duree, self.type_media(), self.titre, self.auteur, self.resolution)
         return s
+    
+class chanson(Media):
+
+    def __init__(self, titre, auteur, duree, album = None, feat = None):
+        super().__init__(titre, auteur, duree)
+        self.album = album
+        if feat is not None:  #donc dans le cas où l'objet contient une liste 
+            self.feat = feat  #feat =liste de string
+        else:
+            self.feat = []
+    def type_media(self):
+        return "Chanson"
+        
+    def taille_par_seconde(self):
+        return 0.05
+
+    def __str__(self):
+        
+        texte_feat = ""
+        if self.feat:
+            texte = ""
+            for i in range(len(self.feat)):
+                texte += self.feat[i]
+                if i != len(self.feat):
+                    texte += ", "
+            texte_feat = " (feat. " + texte + ")"
+            
+        texte_album = ""
+        if self.album:
+            texte_album = "[Album : " + self.album + "]"
+            
+        
+        s = "({}, {}) '{}' par {} {} {}".format(self.duree, self.type_media(), self.titre, self.auteur, texte_feat, texte_album)
+        return s
+        
+        
+        
