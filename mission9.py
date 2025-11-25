@@ -124,7 +124,7 @@ class ListeLecture:
     """
     Représente une compilation nommée de médias.
     """
-
+    ID = 1
     def __init__(self, name):
         """
         @pre:  name est un string
@@ -133,7 +133,8 @@ class ListeLecture:
                Si 'id' est déjà utilisé par une autre instance, 
                alors une erreur 'ValueError' sera levée
         """
-        self.id = 1
+        self.id = ListeLecture.ID
+        ListeLecture.ID += 1
         self.name = name
         self.medias = []
         self.duree = Duree(0, 0, 0)
@@ -238,7 +239,7 @@ class Video(Media):
         s = "({}, {}) '{}' par {} ({})".format(self.duree, self.type_media(), self.titre, self.auteur, self.resolution)
         return s
     
-class chanson(Media):
+class Chanson(Media):
 
     def __init__(self, titre, auteur, duree, album = None, feat = None):
         super().__init__(titre, auteur, duree)
@@ -247,6 +248,7 @@ class chanson(Media):
             self.feat = feat  #feat =liste de string
         else:
             self.feat = []
+            
     def type_media(self):
         return "Chanson"
         
@@ -260,7 +262,7 @@ class chanson(Media):
             texte = ""
             for i in range(len(self.feat)):
                 texte += self.feat[i]
-                if i != len(self.feat):
+                if i != len(self.feat) - 1:
                     texte += ", "
             texte_feat = " (feat. " + texte + ")"
             
