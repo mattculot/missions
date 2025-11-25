@@ -51,11 +51,27 @@ liste_videos = [
 #V1 = Video("Journal d'un noob (tome 1)", "Cube Kid", Duree(2, 36, 21), '180000p')
 
 ############################################################################################
-C1 = chanson("Sweden", "C418", Duree(0, 3, 36), "Minecraft OST", None)
+#objets pour la classe chanson
+C1 = Chanson("Sweden", "C418", Duree(0, 3, 36), "Minecraft OST", None)
 
-C2 = chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), "Fallen Kingdoms", ["Villageois", "Herobrine"])
+C2 = Chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), "Fallen Kingdoms", ["Villageois", "Herobrine"])
 
-C3 = chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), None, ["Villageois", "Herobrine"])
+C3 = Chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), None, ["Villageois", "Herobrine"])
+
+
+playliste3 = ListeLecture("Chansons")
+
+chansons = [
+        Chanson("Sweden", "C418", Duree(0, 3, 36), "Minecraft OST", None),
+
+        Chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), "Fallen Kingdoms", ["Villageois", "Herobrine"]),
+
+        Chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), None, ["Villageois", "Herobrine"])
+        ]
+
+for chanson in chansons:
+    playliste3.ajouter(chanson)
+    
 
 
 
@@ -65,6 +81,8 @@ if __name__ == "__main__":
     afficher_playliste(playliste1)
     print("\n*** TEST DE LA CLASSE ListeLecture ET DE LA CLASSE LivreAudio ***\n")
     afficher_playliste(playliste2)
+    print("\n*** TEST DE LA CLASSE ListeLecture ET DE LA CLASSE chanson ***\n")
+    afficher_playliste(playliste3)
     
     print("test pour la classe video")
     print(liste_videos)
