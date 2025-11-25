@@ -55,7 +55,7 @@ C1 = chanson("Sweden", "C418", Duree(0, 3, 36), "Minecraft OST", None)
 
 C2 = chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), "Fallen Kingdoms", ["Villageois", "Herobrine"])
 
-
+C3 = chanson("Revenge", "CaptainSparklez", Duree(0, 4, 24), None, ["Villageois", "Herobrine"])
 
 
 
@@ -71,6 +71,7 @@ if __name__ == "__main__":
     #print(V1) #l'erreur c'est normal ca veut dire que ca fonctionne bien
     print(C1)
     print(C2)
+    print(C3)
     
     
     
