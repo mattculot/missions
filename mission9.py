@@ -2,8 +2,8 @@
 Classes fournies pour la mission 9; à compléter par les étudiants.
 @author Kim Mens
 @version 14 novembre 2025
+Livio Curati et Matt Culot
 """
-#Livio Curati et Matt Culot
 class Duree :
     """
     Représente une durée dans le temps en format hh:mm:ss
@@ -220,16 +220,19 @@ class Video(Media):
             self.resolution = '4k'
         else:
             raise ValueError
+    
+    def type_media(self):
+        return "Video"
         
     def taille_par_seconde(self):
         """pre: la resolution de __init__
         post: retourne la taille par seconde en MO de la vidéo"""
         
-        if self.resolution == '720p':
+        if self.resolution == '720p'or self.resolution == '720P':
             return 0.1 * 2
-        elif resolution == '1080p':
+        elif self.resolution == '1080p' or self.resolution == '1080P':
             return 0.1 * 5
-        elif resolution == '4k':
+        elif self.resolution == '4K' or self.resolution == '4k':
             return 0.1 * 10
         
     def __str__(self):
@@ -271,8 +274,12 @@ class Chanson(Media):
             texte_album = "[Album : " + self.album + "]"
             
         
-        s = "({}, {}) '{}' par {} {} {}".format(self.duree, self.type_media(), self.titre, self.auteur, texte_feat, texte_album)
-        return s
-        
-        
-        
+        s = "({}, {}) '{}' par {}".format(self.duree, self.type_media(), self.titre, self.auteur)
+
+        if self.feat:
+            s += " (feat. " + texte + ")"
+
+        if self.album:
+            s += " [Album: {}]".format(self.album)
+
+        return s    
