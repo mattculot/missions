@@ -1,0 +1,14 @@
+class chanson(Media):
+    
+    def __init__(self, titre, auteur, duree, album = None, feat = None):
+        super().__init__(titre, auteur, duree)
+        self.album = album
+        self.feat = feat.split(",; :")
+    
+    def taille_par_seconde(self):
+        return 0.05
+    
+    def __str__(self):
+        
+        s = "({}, {}) '{}' par {} (feat: {}) [Album: {}]".format(self.duree, self.type_media(), self.titre, self.auteur, self.feat, self.album)
+        return s
